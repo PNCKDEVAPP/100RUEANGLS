@@ -5,7 +5,7 @@ const lineReader = require('line-reader');
 const textstats = require('./textstats.js');
 
 
-function pomk(){
+
 Array.prototype.randomElement = function () {
   return this[Math.floor(Math.random() * this.length)];
 }
@@ -78,25 +78,5 @@ fs.writeFile(`content/english/blog/100gallery/${title_set.replace(/_/g,'')}.md`,
 });
 });
 });
-}
 
-function getdim(){
-    Array.prototype.randomElement = function () {
-        return this[Math.floor(Math.random() * this.length)];
-      }
-      
-      
-      lineReader.eachLine('no.txt', (line, last) => {
-        let testFolder = "static/photo/"+line.split("/")[2]+"/"
-        fs.readdir(testFolder, (err, files) => {
-            //files.forEach(file => {
-            //  console.log(file);
-            //console.log(files.randomElement())
 
-    console.log(`- "photo/${line.split("/")[2]}/${files.randomElement()}"`)
-
-    })
-})
-}
-
-getdim()

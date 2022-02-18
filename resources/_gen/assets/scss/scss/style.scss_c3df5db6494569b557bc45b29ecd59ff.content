@@ -170,7 +170,8 @@ ul {
 
 img {
   vertical-align: middle;
-  border: 0; }
+  border: 0;
+  border-radius: 20px; }
 
 a,
 a:hover,
