@@ -1,0 +1,15 @@
+######################## default configuration ####################
+baseURL = "https://100เรื่อง.com/"
+title = "100เรื่องอัพเดทล่าสุด สดทุกวัน"
+
+# post pagination
+paginate = "9"
+# post excerpt
+summaryLength = "15"
+# disqus short name
+disqusShortname = "" # get your shortname form here : https://disqus.com
+# google analytics
+googleAnalytics = "" # example : UA-123-45
+# unsafe html
+[markup.goldmark.renderer]
+unsafe = true

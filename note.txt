@@ -1,0 +1,98 @@
+ //(https?.+?\.(jpe?g|gif|png)) images
+ 
+ function h2hAID(matid){
+        
+        axios.get('https://apiv2.allsportsapi.com/football/?&met=Teams&teamId='+matid+'&APIkey=92e0341ec48ac5f09c6028dff2bb4b29edac27b000b45baf4eef0c8084eeaa64')
+        .then(function (response) {
+            var away = [];
+            // handle success
+            var setPlayer = [];
+            var team_logo = response.data.result[0].team_logo;
+            var team_name = response.data.result[0].team_name;
+            var coach_name = response.data.result[0].coaches[0].coach_name;
+            var players = response.data.result[0].players;
+            jQuery.each( players, function( i, val ) {
+               // var competitionName = val.competition.name;
+                var player_match_played = val.player_match_played;
+                var player_name = val.player_name;
+                var player_number = val.player_number;
+                var player_type = val.player_type;
+                var player_red_cards = val.player_red_cards;
+                var player_yellow_cards = val.player_yellow_cards;
+                var player_image = val.player_image;
+                var playset = {
+                    p_match_played: player_match_played,
+                    p_name: player_name,
+                    p_number: player_number,
+                    p_type: player_type,
+                    p_red_cards: player_red_cards,
+                    p_yellow_cards: player_yellow_cards,
+                    p_image: player_image
+                }
+                setPlayer.push(playset)
+               
+            });
+            var adatateam = {
+                t_logo: team_logo,
+                t_name: team_name,
+                c_name: coach_name,
+                sPlayer: setPlayer
+            }
+            //console.log(datateam)
+            away.push(adatateam);
+            // console.log(team_logo,team_name,coach_name);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });
+        return away;
+      }
+
+      function h2hHID(matid){
+        axios.get('https://apiv2.allsportsapi.com/football/?&met=Teams&teamId='+matid+'&APIkey=92e0341ec48ac5f09c6028dff2bb4b29edac27b000b45baf4eef0c8084eeaa64')
+        .then(function (response) {
+            var home = [];
+            // handle success
+            var setPlayer = [];
+            var team_logo = response.data.result[0].team_logo;
+            var team_name = response.data.result[0].team_name;
+            var coach_name = response.data.result[0].coaches[0].coach_name;
+            var players = response.data.result[0].players;
+            jQuery.each( players, function( i, val ) {
+               // var competitionName = val.competition.name;
+                var player_match_played = val.player_match_played;
+                var player_name = val.player_name;
+                var player_number = val.player_number;
+                var player_type = val.player_type;
+                var player_red_cards = val.player_red_cards;
+                var player_yellow_cards = val.player_yellow_cards;
+                var player_image = val.player_image;
+                var playset = {
+                    p_match_played: player_match_played,
+                    p_name: player_name,
+                    p_number: player_number,
+                    p_type: player_type,
+                    p_red_cards: player_red_cards,
+                    p_yellow_cards: player_yellow_cards,
+                    p_image: player_image
+                }
+                setPlayer.push(playset)
+               
+            });
+            var hdatateam = {
+                t_logo: team_logo,
+                t_name: team_name,
+                c_name: coach_name,
+                sPlayer: setPlayer
+            }
+            //console.log(datateam);
+            home.push(hdatateam);
+            // console.log(team_logo,team_name,coach_name);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });
+        return home;
+      }

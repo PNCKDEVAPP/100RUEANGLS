@@ -1,0 +1,148 @@
+{{ define "main" }}
+
+{{ partial "page-header.html" . }}
+<section class="section bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 mb-4 mb-lg-0">
+        <form action="{{ site.Params.contact_form_action | safeURL }}" method="POST">
+          <input type="text" class="form-control mb-3" id="name" name="name" placeholder="{{ i18n `yourname` }}">
+          <input type="email" class="form-control mb-3" id="mail" name="mail" placeholder="{{ i18n `youremail` }}">
+          <input type="text" class="form-control mb-3" id="subject" name="subject" placeholder="{{ i18n `subject` }}">
+          <textarea name="message" id="message" class="form-control mb-3"
+            placeholder="{{ i18n `yourmessage` }}"></textarea>
+          <button type="submit" value="send" class="btn btn-primary">{{ i18n `sendnow` }}</button>
+        </form>
+      </div>
+
+      <div class="col-lg-5 content">
+        <script src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@latest/js/moovie.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@latest/css/moovie.min.css">
+        <style>
+          .av-parent {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-column-gap: 5px;
+            grid-row-gap: 5px;
+          }
+        </style>
+        <div class="outer" style="font-family: 'Kanit' ,sans-serif;">
+          <div class="inner">
+            <div class="grid post-feed">
+              {{ $dataeporner := getJSON
+              "https://www.eporner.com/api/v2/video/search/?query=hd&per_page=50&page=1&thumbsize=big&order=top-weekly&lq=1&format=json"
+              }}
+              {{ range $index, $val := $dataeporner.videos }}
+              <article class="cell post">
+                <div class="card">
+                  {{ if .title }}
+                  <a class="post-thumbnail" href="#">
+                    <img src="{{ .default_thumb.src | relURL }}" alt="{{ .title }}" />
+                  </a>
+                  {{ end }}
+                  <div class="post-body">
+                    <header class="post-header">
+                      <h2 class="post-title"><a href="#">{{ .title | truncate 20 }}</a></h2>
+                    </header>
+                    <div class="post-excerpt">
+                      <p style="font-size: small;">📼{{ .views }} ✨{{ .rate }}</p>
+                    </div>
+                    <button type="button" class="btn btn-primary video-btn" data-bs-toggle="modal"
+                      data-src="{{ .embed }}" data-bs-target="#myModal">
+                      ดู {{ .title | truncate 20 }}
+                    </button>
+                  </div>
+                </div>
+              </article>
+              {{ end }}
+            </div><!-- .post-feed -->
+          </div><!-- .inner -->
+        </div><!-- .outer-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css"
+          rel="stylesheet">
+        <style>
+          .modal-dialog {
+            max-width: 800px;
+            margin: 30px auto;
+          }
+
+          .modal-body {
+            position: relative;
+            padding: 0px;
+          }
+
+          .btn-close {
+            position: absolute;
+            right: -30px;
+            top: 0;
+          }
+        </style>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></span>
+                </button>
+                <!-- 16:9 aspect ratio -->
+                <div class="ratio ratio-16x9">
+                  <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always"
+                    allow="autoplay"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var $videoSrc;
+    $('.video-btn').click(function () {
+      $videoSrc = $(this).data("src");
+    });
+    console.log($videoSrc);
+    $('#myModal').on('shown.bs.modal', function (e) {
+      $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
+    })
+    $('#myModal').on('hide.bs.modal', function (e) {
+      // a poor man's stop video
+      $("#video").attr('src', $videoSrc);
+    })
+  });
+  var demo1 = new Moovie({
+    selector: "#100tv",
+    dimensions: {
+      width: "100%"
+    },
+    config: {
+      storage: {
+        captionOffset: false,
+        playrateSpeed: false,
+        captionSize: false
+      },
+      controls: {
+        playtime: false,
+        volume: false,
+        subtitles: false,
+        fullscreen: false,
+        submenuCaptions: true,
+        submenuOffset: false,
+        allowLocalSubtitles: false
+      }
+    },
+    icons: {
+      path: "https://raw.githubusercontent.com/BMSVieira/moovie.js/main/icons/"
+    }
+  });
+</script>
+{{ .Content }}
+</div>
+</div>
+</div>
+</section>
+
+{{ end }}

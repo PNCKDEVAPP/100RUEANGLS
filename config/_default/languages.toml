@@ -1,0 +1,29 @@
+############################# English ############################
+[en]
+languageName = "Th"
+title = "100เรื่องอัพเดทล่าสุด สดทุกวัน"
+contentDir = "content/english" # content/english
+weight = 1
+########### footer content ##########
+footer_menu_left = "Company"
+footer_menu_middle = "Product"
+footer_menu_right = "Support"
+footer_content = " 100เรื่อง ค้นหารูปภาพของ สาวสวย ฟรี รวม รูปดารา นางแบบ สาวสวย สาวน่ารัก สาวเซ็กซี่ ขยี้ใจชาย ดู รูปดารา สาวสวย ภาพนางแบบ สาวเซ็กซี่ เน็ตไอดอล สาวน่ารัก sexy girl"
+# copyright
+copyright = "Design By [PNCKDEVAPP](https://pnckdevapp.com/)"
+
+
+
+############################# Deutsch ############################
+# [de]
+# languageName = "De"
+# title = "Bigspring Hugo"
+# contentDir = "content/deutsch" # content/german
+# weight = 2
+# ########### footer content ##########
+# footer_menu_left = "Firma"
+# footer_menu_middle = "Produkte"
+# footer_menu_right = "Support"
+# footer_content = "Lorem ipsum dolor sit amet, consectetur elit. Consjat tristique eget amet, tempus eu at cttur."
+# # copyright
+# copyright = "Design von [Themefisher](https://themefisher.com/) Entwickelt von [Gethugothemes](https://gethugothemes.com/)"

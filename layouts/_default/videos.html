@@ -1,0 +1,52 @@
+{{ define "main" }}
+<link href="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@latest/css/moovie.min.css" rel="stylesheet">
+<section class="section">
+    <div class="container">  
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="content">
+                    <video id="example"
+                        poster="{{ site.BaseURL }}/video/{{ .Title }}.jpg"
+                        controls>
+                        <source
+                            src="{{ site.BaseURL }}/video/{{ .Title }}.mp4"
+                            type="video/mp4">
+                        <track kind="captions" label="English captions"
+                            src="{{ site.BaseURL }}/static/video/{{ .Title }}.vtt" srclang="en" default>
+                    </video>
+                    {{ partial "page-header.html" . }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://captionatorjs.com/git/js/captionator_0_5.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@latest/js/moovie.min.js"></script>
+<script>
+    var demo1 = new Moovie({
+        selector: "#example",
+        dimensions: {
+            width: "100%"
+        },
+        config: {
+            storage: {
+                captionOffset: false,
+                playrateSpeed: false,
+                captionSize: false
+            },
+            controls: {
+                playtime: false,
+                volume: false,
+                subtitles: false,
+                fullscreen: false,
+                submenuCaptions: true,
+                submenuOffset: false,
+                allowLocalSubtitles: false
+            }
+        },
+        icons: {
+            path: "https://raw.githubusercontent.com/BMSVieira/moovie.js/main/icons/"
+        }
+    });
+</script>
+{{ end }}

@@ -1,0 +1,17 @@
+request = requests.post('https://apiv2.ahrefs.com/?token=09399bb9c2eda7e2da9c9e61001138d1e9259550&target=' + domain +'&limit=1000&output=json&from=positions_metrics&mode=subdomains')
+request_json = request.json()
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+    function seocheck(urldomain){
+    var domain = urldomain
+    axios.post('https://apiv2.ahrefs.com/?token=09399bb9c2eda7e2da9c9e61001138d1e9259550&target=' + domain +'&limit=1000&output=json&from=positions_metrics&mode=subdomains')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+</script>

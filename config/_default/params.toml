@@ -1,0 +1,51 @@
+#################### default parameters ################################
+logo = "images/100RUEANG.webp"
+logo_width = "200px"
+# OpenGraph / Twitter Card metadata
+description = "100เรื่องค้นหารูปภาพของ สาวสวยฟรี รวมรูปดารา นางแบบสาวสวย สาวน่ารักสาวเซ็กซี่ ขยี้ใจชายดู รูปดาราสาวสวย ภาพนางแบบสาวเซ็กซี่ เน็ตไอดอลสาวน่ารักsexygirl"
+author = "PNCKDEVAPP"
+image = "images/logo.png" # this image will be used as fallback if a page has no image of its own
+# contact form action
+contact_form_action = "#" # contact form works with https://formspree.io
+
+# Type of pages to be rendered with a blog view
+blogCategoryType = "category"
+
+# Preloader
+[preloader]
+enable = false
+preloader = "" # use jpg, png, svg or gif format.
+
+# Navigation buttons
+[navigation_button]
+enable = true
+label = "Get Started"
+link = "/"
+
+# cookies
+[cookies]
+enable = false
+expire_days = 2
+content = "This site uses cookies. By continuing to use this website, you agree to their use."
+button = "I Accept"
+  
+############################# social site ########################
+[[social]]
+title = "facebook"
+icon = "fab fa-facebook" # themify icon : https://themify.me/themify-icons
+link = "#"
+
+[[social]]
+title = "twitter"
+icon = "fab fa-twitter" # themify icon : https://themify.me/themify-icons
+link = "#"
+
+[[social]]
+title = "vk"
+icon = "fab fa-vk" # themify icon : https://themify.me/themify-icons
+link = "#"
+
+[[social]]
+title = "linkedin"
+icon = "fab fa-linkedin" # themify icon : https://themify.me/themify-icons
+link = "#"
