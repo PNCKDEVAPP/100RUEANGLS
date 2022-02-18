@@ -197,7 +197,7 @@ def batch_get_pic():
 
 
 
-get_video_art_list()
+#get_video_art_list()
 
 #get_pic_art_list()
 
