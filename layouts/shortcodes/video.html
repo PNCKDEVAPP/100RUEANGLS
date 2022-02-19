@@ -2,25 +2,28 @@
     .display-3{
        font-size: medium;
       }
-      video {
-        width: 100%;
-        max-height: 100%;
-      }
+      
 </style>
-
+<script src="https://captionatorjs.com/git/js/captionator_0_5.js"></script>
+    <script type="text/javascript">
+        window.addEventListener("load",function(eventData) {
+            captionator.captionify();
+        });
+       
+    </script>
 <link href="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@latest/css/moovie.min.css" rel="stylesheet">
   <video id="example"
-  poster=""
+  poster="{{ site.BaseURL }}/images/2588755.jpg"
   controls>
   <source
-      src="{{ .Get 0 }}"
+      src="{{ .Get "src" }}"
       type="video/mp4">
-  <track kind="captions" label="English captions"
-      src="" srclang="en" default>
+   
 </video>
-  <script src="https://captionatorjs.com/git/js/captionator_0_5.js"></script>
+  
   <script src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@latest/js/moovie.min.js"></script>
   <script>
+    captionator.captionify("#example","th")
       var demo1 = new Moovie({
           selector: "#example",
           dimensions: {
@@ -37,7 +40,7 @@
                   volume: false,
                   subtitles: false,
                   fullscreen: false,
-                  submenuCaptions: true,
+                  submenuCaptions: false,
                   submenuOffset: false,
                   allowLocalSubtitles: false
               }
